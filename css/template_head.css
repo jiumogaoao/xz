@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+.template_head{
+	width:100%;}
+.template_head .topFrame{
+	width:100%;
+	height:90px;}
+.template_head .top{
+	width:1120px;
+	margin:auto;}
+.template_head .icon{
+	float:left;}
+.template_head .searchFrame{
+	float:left;
+	margin-top:25px;
+  margin-left:75px;}
+.template_head .button{
+	float:right;
+	font-size: 12px;
+  border-radius: 5px;
+  padding: 0px 10px;
+    margin-right: 4px;
+  height: 29px;
+  line-height: 29px;
+  border: 1px solid #1e8ee6;
+  color: #1e8ee6;
+  margin-top:30px;
+  }
+.template_head .searchPoint{
+	float:left;
+	font-size:12px;
+	padding:0px 10px;
+	margin-top:5px;
+	border-right:1px solid #555;}
+.template_head .searchInput{
+	width: 419px;
+  border: 2px solid #50abf2;
+  border-right: none;
+  height: 35px;
+  line-height: 17px;
+  padding: 7px 10px;
+  float: left;
+	}
+.template_head .searchButton{
+	  width: 90px;
+  height: 35px;
+  line-height: 35px;
+  background-color: #50abf2;
+  float: left;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+	}
+.template_head .bottomFrame{
+	height:50px;
+	background-color:#333;
+	width:100%;}
+.template_head .bottom{
+	width:1120px;
+	margin:auto;}
+.template_head .nav{
+	height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 14px;
+  width: 84px;
+  float: left;
+  color: #fff;
+  -webkit-transition: background-color 0.8s ease;
+  -moz-transition: background-color 0.8s ease;
+  -o-transition: background-color 0.8s ease;
+  transition: background-color 0.8s ease;}
+.template_head .tel{
+	  float:right;
+	  color:#fff;
+	  line-height:50px;
+	  font-size:14px;
+	  margin-left:10px;
+	  position:relative;
+	  top:-5px;}
+.template_head .telNum{
+	font-size:22px;
+	font-weight:bold;}
+.template_head .telIcon{
+	float:right;
+	color:#fff;
+	line-height:50px;}
