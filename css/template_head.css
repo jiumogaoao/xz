@@ -4,7 +4,8 @@
 	width:100%;}
 .template_head .topFrame{
 	width:100%;
-	height:90px;}
+	height:90px;
+	background-color:#fff;}
 .template_head .top{
 	width:1120px;
 	margin:auto;}
@@ -13,7 +14,8 @@
 .template_head .searchFrame{
 	float:left;
 	margin-top:25px;
-  margin-left:75px;}
+  margin-left:75px;
+  width:509px;}
 .template_head .button{
 	float:right;
 	font-size: 12px;
