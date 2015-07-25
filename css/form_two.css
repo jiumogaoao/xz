@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+.form_two{
+	width:1224px;
+	margin:auto;}
+.form_two .left{
+	width:925px;
+	float:left;
+	}
+.form_two .right{
+	width:287px;
+	height:500px;
+	float:left;
+	margin-left:12px;
+	}
+.form_two .top_left{
+	width:600px;
+	height:245px;
+	float:left;}
+.form_two .top_right{
+	width:315px;
+	height:245px;
+	float:left;
+	margin-left:10px;
+	}
+.form_two .bottom_left{
+	width:315px;
+	height:245px;
+	float:left;
+	margin-top:10px;}
+.form_two .bottom_right{
+	width:600px;
+	height:245px;
+	float:left;
+	margin-left:10px;
+	margin-top:10px;
+	}

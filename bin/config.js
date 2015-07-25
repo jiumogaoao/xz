@@ -3,7 +3,8 @@ var sourArry=[location.hostname];
 var config={
 	sour:sourArry[0],
 	loadingOn:function(){},
-	loadingOff:function(){}
+	loadingOff:function(){},
+	template:["single","double"]
 	};
 var uuid=function(){
 		return 'xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

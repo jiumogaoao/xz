@@ -4,3 +4,8 @@
 	width:1120px;
 	margin:auto;
 	}
+.template_center_two .template_left{float:left;
+width:896px;}
+.template_center_two .template_right{
+	float:right;
+	width:208px;}

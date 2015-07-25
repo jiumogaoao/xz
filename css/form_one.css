@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+.form_one{
+	width:1224px;
+	margin:auto;}
+.form_one .left{
+	width:606px;
+	float:left;}
+.form_one .right{
+	width:606px;
+	float:left;
+	margin-left:12px;
+	}
+.form_one .left .top{
+	width:606px;
+	height:290px;
+	margin-bottom:12px;
+	}
+.form_one .left .bottomL{
+	float:left;
+	width:194px;
+	height:140px;}
+.form_one .left .bottomR{
+	float:left;
+	width:400px;
+	height:140px;
+	margin-left:12px;
+	}
+.form_one .right .top{
+	width:606px;
+	height:140px;
+	margin-bottom:12px;}
+.form_one .right .bottom{
+	width:606px;
+	height:290px;}
