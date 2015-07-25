@@ -1,0 +1,27 @@
+<link href="css/template_center.css" rel="stylesheet" rev="stylesheet" type="text/css"/>
+<div class="template_center">
+<div class="template_top">
+	<% if(type==0){ %>
+    个人设置
+    <% }else{ %>
+    网站管理
+    <% } %>
+    </div>
+    <div class="clear"></div>
+    <div class="template_left">
+   <% if(type==0){ %>
+    	<a class="nav">持有商品</a>
+        <a class="nav">收支记录</a>
+        <a class="nav">个人设置</a>
+        <a class="nav">密码修改</a>
+   <% }else{ %>
+   		<a class="nav">商品管理</a>
+        <a class="nav">宣传管理</a>
+        <a class="nav">用户管理</a>
+        <a class="nav">收支记录</a>
+        <a class="nav">管理员管理</a>
+   <% } %>
+    </div>
+    <div class="template_right"></div>
+    <div class="clear"></div>
+</div>
