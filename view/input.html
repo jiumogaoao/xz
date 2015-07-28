@@ -1,0 +1,70 @@
+<link href="css/table.css" rel="stylesheet" rev="stylesheet" type="text/css"/>
+<div class="table input">
+<table align="center" border="0" cellspacing="1" cellpadding="0">
+<tbody>
+
+<% _.each(input,function(x,y){ %>
+<tr><td align="center" valign="middle" width="30%" class="left"><%= x.title %></td>
+<td align="center" valign="middle" width="70%" name="<%= x.name %>" type="<%= x.type %>" class="right <%= x.type %>">
+<% if(x.type=="singlepic"){ %>
+<img src="<%= x.value %>"/>
+<% }else if(x.type=="mulipic") { %>
+<div><span class="fa fa-plus-square-o"></span></div>
+<div class="picFrame"></div>
+<% }else if(x.type=="image") { %>
+<img src="<%= x.value %>"/>
+<% }else if(x.type=="simple") { %>
+<%= x.value %>
+<% }else if(x.type=="textarea") { %>
+<textarea><%= x.value %></textarea>
+<% }else if(x.type=="date") { %>
+<input value="<%= x.value %>"/>
+<% }else if(x.type=="password") { %>
+<input type="password" value="<%= x.value %>"/>
+<% }else if(x.type=="number") { %>
+<input value="<%= x.value||0 %>"/>
+<div class="up"><span class="fa fa-caret-up"></span></div>
+<div class="down"><span class="fa fa-caret-down"></span></div>
+<% }else if(x.type=="dropdown") { %>
+<select>
+<%_.each(x.other,function(o){%>
+<option value="<%=o.label%>"><%=o.label%></option>
+<%})%>
+</select>
+<% }else if(x.type=="toggle") { %>
+<div><span class="fa fa-plus-square-o"></span></div>
+<% }else if(x.type=="rich") { %>
+<div></div>
+<% }else{ %>
+<input value="<%= x.value %>"/>
+<% } %>
+</td></tr>
+<% }) %>
+
+</tbody>
+</table>
+<div class="clear"></div>
+<% if(button){ 
+	_.each(button,function(n){ %>
+  <button class="inputButton" type="button" id="<%= n.id %>"><%= n.name %></button>
+<% })} %>
+<div class="clear"></div>
+</div>
+<script>
+$(".table.input .number .up").unbind("click").bind("click",function(){
+	var number=Number($(this).parents("td").find("input").val())+1;
+	$(this).parents("td").find("input").val(number);
+	});
+$(".table.input .number .down").unbind("click").bind("click",function(){
+	var number=Number($(this).parents("td").find("input").val())-1;
+	if(number>=0){
+		$(this).parents("td").find("input").val(number);
+		}
+	});
+$(".table.input .number input").unbind("keyup").bind("keyup",function(event){
+	$(this).val($(this).val().replace(/[^\d]/g,''))
+	});
+$(".table.input .date input").each(function(){
+	$(this).datepicker();
+	});
+</script>

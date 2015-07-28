@@ -27,8 +27,7 @@
   text-align:center;
 	}
 .template_right{
-  border-top: 1px solid #e5e5e5;
   float: left;
-  min-width: 900px;
+  width: 1006px;
   padding-left: 20px;
 }

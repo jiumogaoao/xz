@@ -1,0 +1,35 @@
+<link href="css/table.css" rel="stylesheet" rev="stylesheet" type="text/css"/>
+<div class="table">
+<div class="clear"></div>
+<% if(button){ 
+	_.each(button,function(n){ %>
+  <button class="inputButton" type="button" id="<%= n.id %>"><%= n.name %></button>
+<% })} %>
+<div class="clear"></div>
+<table align="center" border="0" cellspacing="1" cellpadding="0">
+<thead>
+<tr>
+<% _.each(head,function(n){ %>
+<td align="center" valign="middle"<% if(n.width){print('width="'+n.width+'"')} %>><%= n.name %></td>
+<% }) %>
+</tr>
+
+</thead>
+<tbody>
+<% _.each(main,function(n){ %>
+<tr>
+<% _.each(n,function(x,y){ %>
+<td align="center" valign="middle">
+<% if(head[y]){
+	print('<a href="'+x.href+'">'+x.value+'</a>');
+}else{
+	print(x.value)
+} %>
+
+</td>
+<% }) %>
+</tr>
+<% }) %>
+</tbody>
+</table>
+</div>

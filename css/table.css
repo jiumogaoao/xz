@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+.table{
+	width:100%;}
+.table table{
+	width:90%;
+	margin:auto;
+	margin-top:20px;
+	background-color:#B9B9B9;}
+.table thead td{
+	height:40px;
+	background-color:#50abf2;
+	color:#fff;}
+.table tbody td{
+	height:40px;
+	background-color:#fff;
+	color:#555;}
+.table.input .right input{
+	width:100%;
+	height:100%;
+	line-height:100%;
+	text-align:center;
+	}
+.table.input .right textarea{
+	width:100%;
+	height:200px;}
+.inputButton{
+	width:100px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	background-color:#FF9600;
+	color:#fff;
+	margin-top:20px;
+	float:right;
+	}
+.table.input .number{
+	position:relative;}
+.table.input .number .up{
+	position:absolute;
+	top:0px;
+	right:5px;
+	cursor:pointer;}
+.table.input .number .down{
+	position:absolute;
+	bottom:0px;
+	right:5px;
+	cursor:pointer;}
