@@ -9,10 +9,13 @@
 <% if(x.type=="singlepic"){ %>
 <img src="<%= x.value %>"/>
 <% }else if(x.type=="mulipic") { %>
-<div><span class="fa fa-plus-square-o"></span></div>
-<div class="picFrame"></div>
+<div class="picFrame">
+<div id="add"><span class="fa fa-plus-square-o"></span></div>
+</div>
 <% }else if(x.type=="image") { %>
+
 <img src="<%= x.value %>"/>
+
 <% }else if(x.type=="simple") { %>
 <%= x.value %>
 <% }else if(x.type=="textarea") { %>
@@ -67,4 +70,36 @@ $(".table.input .number input").unbind("keyup").bind("keyup",function(event){
 $(".table.input .date input").each(function(){
 	$(this).datepicker();
 	});
+$(".table.input .mulipic").each(function(){
+	var that=this;
+	var uploader = WebUploader.create({
+		auto: true,
+		fileVal:"upfile",
+		swf:"http://"+location.hostname+"/xz/include/Uploader.swf",
+		server:"http://"+location.hostname+"/xz/ueditor/php/controller.php?action=uploadimage",
+		pick:$(that).find("#add"),
+		resize:false
+		});
+		uploader.on( 'fileQueued', function( file ) {
+	uploader.makeThumb( file, function( error, src ) {
+        if ( error ) {
+            $img.replaceWith('<span>不能预览</span>');
+            return;
+        }
+$(that).find("#add").before(
+'<div class="newPic" pid="'+file.id+'">'+
+'<img src="'+src+'"/>'+
+'<div class="remove"></div>'+
+'</div>'
+)
+    }, 160, 100 );
+	
+			})
+	uploader.on( 'uploadProgress', function( file, percentage ) {
+		
+		})
+		uploader.on( 'uploadSuccess', function( file ,re) {
+			alert(JSON.stringify(file))
+});
+	})
 </script>
