@@ -10,7 +10,7 @@
 <img src="<%= x.value %>"/>
 <% }else if(x.type=="mulipic") { %>
 <div class="picFrame">
-<div id="add"><span class="fa fa-plus-square-o"></span></div>
+<div id="addFrame"><div id="add"><span class="fa fa-plus-square-o"></span></div></div>
 </div>
 <% }else if(x.type=="image") { %>
 
@@ -70,7 +70,8 @@ $(".table.input .number input").unbind("keyup").bind("keyup",function(event){
 $(".table.input .date input").each(function(){
 	$(this).datepicker();
 	});
-$(".table.input .mulipic").each(function(){
+var delay=setTimeout(function(){
+	$(".table.input .mulipic").each(function(){
 	var that=this;
 	var uploader = WebUploader.create({
 		auto: true,
@@ -86,10 +87,10 @@ $(".table.input .mulipic").each(function(){
             $img.replaceWith('<span>不能预览</span>');
             return;
         }
-$(that).find("#add").before(
+$(that).find("#addFrame").before(
 '<div class="newPic" pid="'+file.id+'">'+
 '<img src="'+src+'"/>'+
-'<div class="remove"></div>'+
+'<div class="remove"><span class="fa fa-times"></span></div>'+
 '</div>'
 )
     }, 160, 100 );
@@ -102,4 +103,7 @@ $(that).find("#add").before(
 			alert(JSON.stringify(file))
 });
 	})
+	
+	},200);
+
 </script>

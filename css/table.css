@@ -46,3 +46,37 @@
 	bottom:0px;
 	right:5px;
 	cursor:pointer;}
+.table.input #addFrame{
+	float:left;
+	width:100px;
+	height:100px;
+	margin-left:34px;
+	margin-top:10px;
+	}
+.table.input #add .fa{
+	font-size:127px;
+	line-height:100px;
+	position:relative;
+	top:5px;
+	}
+.table.input .newPic{
+	float:left;
+	margin-left:34px;
+	margin-top:10px;
+	position:relative;}
+.table.input .newPic .remove{
+	position:absolute;
+	top:0px;
+	right:0px;
+	z-index:1;
+	display:none;}
+.table.input .newPic .remove .fa{
+	color:#D00003;
+	font-size:30px;
+	}
+.table.input .newPic:hover .remove{
+	display:block;
+	cursor:pointer;}
+.table.input select{
+	width:100%;
+	height:100%;}
