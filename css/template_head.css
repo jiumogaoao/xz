@@ -27,6 +27,7 @@
   border: 1px solid #1e8ee6;
   color: #1e8ee6;
   margin-top:30px;
+  cursor:pointer;
   }
 .template_head .searchPoint{
 	float:left;

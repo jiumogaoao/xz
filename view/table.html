@@ -3,7 +3,7 @@
 <div class="clear"></div>
 <% if(button){ 
 	_.each(button,function(n){ %>
-  <button class="inputButton" type="button" id="<%= n.id %>"><%= n.name %></button>
+  <button class="inputButton"  type="button" id="<%= n.id %>"><%= n.name %></button>
 <% })} %>
 <div class="clear"></div>
 <table align="center" border="0" cellspacing="1" cellpadding="0">
@@ -16,16 +16,11 @@
 
 </thead>
 <tbody>
-<% _.each(main,function(n){ %>
+<% _.each(main,function(n,i){ %>
 <tr>
 <% _.each(n,function(x,y){ %>
-<td align="center" valign="middle">
-<% if(head[y]){
-	print('<a href="'+x.href+'">'+x.value+'</a>');
-}else{
-	print(x.value)
-} %>
-
+<td x="<%= y %>" y="<%= i %>" align="center" value="<%= x.value %>" valign="middle"<% if(head[y].type=="link"){print(' class="link"')} %>>
+	<%= x.value %>
 </td>
 <% }) %>
 </tr>

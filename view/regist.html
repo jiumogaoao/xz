@@ -1,0 +1,28 @@
+<link href="css/login.css" rel="stylesheet" rev="stylesheet" type="text/css"/>
+<div class="login regist">
+	<div class="main">
+    	<div class="point">
+        	<div class="left">手机号</div>
+            <div class="right"><input name="userName"/></div>
+            <div class="clear"></div>
+        </div>
+        <div class="point">
+        	<div class="left">验证码</div>
+            <div class="right"><input name="password"/></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="forget">发送验证码</div>
+    <div class="clear"></div>
+    <div class="button" id="cancel">取消</div>
+    <div class="button" id="regist">注册</div>
+    <div class="clear"></div>
+    <div class="closePop"><span class="fa fa-times-circle"></span></div>
+</div>
+<script>
+$(".login .closePop,.login #cancel").unbind("click").bind("click",function(){
+	app.pop.off();
+	})
+
+</script>

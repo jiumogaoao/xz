@@ -1,9 +1,9 @@
 // JavaScript Document
 ;(function($,obj,config){
 	obj.set({
-		name:"dealManage",
+		name:"produceDetail",
 		par:"id",
-		tem:["template_head","template_foot","template_center","table"],
+		tem:["template_head","template_foot","produce_detail"],
 		fn:function(data){
 			$("#head").html(data.tem[0]);
 			var table={
@@ -15,6 +15,8 @@
 				};
 			var main=_.template(data.tem[2])({type:1});
 			$("#middle").html(main);
+			var tableA=_.template(data.tem[3])(table);
+			$("#middle .template_right").html(tableA);
 			$("#foot").html(data.tem[1]);
 			}
 		});

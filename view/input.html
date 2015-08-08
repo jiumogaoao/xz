@@ -7,7 +7,9 @@
 <tr><td align="center" valign="middle" width="30%" class="left"><%= x.title %></td>
 <td align="center" valign="middle" width="70%" name="<%= x.name %>" type="<%= x.type %>" class="right <%= x.type %>">
 <% if(x.type=="singlepic"){ %>
-<img src="<%= x.value %>"/>
+<div class="img">
+<img src="<%= x.value||"img/addfile.png" %>"/>
+</div>
 <% }else if(x.type=="mulipic") { %>
 <div class="picFrame">
 <div id="addFrame"><div id="add"><span class="fa fa-plus-square-o"></span></div></div>
@@ -37,7 +39,7 @@
 <% }else if(x.type=="toggle") { %>
 <div><span class="fa fa-plus-square-o"></span></div>
 <% }else if(x.type=="rich") { %>
-<div></div>
+<div id="editor_<%= uuid() %>" class="richframe" type="text/plain" style="width:618px;height:500px;"></div>
 <% }else{ %>
 <input value="<%= x.value %>"/>
 <% } %>
@@ -97,13 +99,42 @@ $(that).find("#addFrame").before(
 	
 			})
 	uploader.on( 'uploadProgress', function( file, percentage ) {
-		
 		})
 		uploader.on( 'uploadSuccess', function( file ,re) {
 			alert(JSON.stringify(file))
 });
 	})
 	
+	$(".table.input .singlepic").each(function(){
+	var that=this;
+	var uploader = WebUploader.create({
+		auto: true,
+		fileVal:"upfile",
+		swf:"http://"+location.hostname+"/xz/include/Uploader.swf",
+		server:"http://"+location.hostname+"/xz/ueditor/php/controller.php?action=uploadimage",
+		pick:$(that).find(".img"),
+		resize:false
+		});
+		uploader.on( 'fileQueued', function( file ) {
+	uploader.makeThumb( file, function( error, src ) {
+        if ( error ) {
+            $img.replaceWith('<span>不能预览</span>');
+            return;
+        }
+$(that).find(".img img").attr("src",src);
+    }, 160, 100 );
+	
+			})
+	uploader.on( 'uploadProgress', function( file, percentage ) {
+		})
+		uploader.on( 'uploadSuccess', function( file ,re) {
+			alert(JSON.stringify(file))
+});
+	})
+	$(".table.input .rich").each(function(){
+		var that=this;
+		var ue = UE.getEditor($(that).find(".richframe").attr("id"));
+		});
 	},200);
 
 </script>

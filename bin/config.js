@@ -2,8 +2,15 @@
 var sourArry=[location.hostname];
 var config={
 	sour:sourArry[0],
-	loadingOn:function(){},
-	loadingOff:function(){},
+	loadingOn:function(){
+		$("#loading").show();
+		$("#loadingBG").show();
+		$("#loading").css({"top":($(window).height()-155)/2});
+		},
+	loadingOff:function(){
+		$("#loading").hide();
+		$("#loadingBG").hide();
+		},
 	template:["single","double"]
 	};
 var uuid=function(){

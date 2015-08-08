@@ -24,6 +24,9 @@
 			$("#middle").html(main);
 			var tableA=_.template(data.tem[3])(table);
 			$("#middle .template_right").html(tableA);
+			$("#middle #add").unbind("click").bind("click",function(){
+				window.location.hash="goodManage";
+				});
 			$("#foot").html(data.tem[1]);
 			}
 		});

@@ -17,8 +17,8 @@
                 <a href="#double/1/7" class="searchPoint">地方站</a>
                 <div class="clear"></div>
             </div>
-            <div class="button">登录</div>
-            <div class="button">快速注册</div>
+            <div class="button" id="login">登录</div>
+            <div class="button" id="regist">快速注册</div>
             <div class="clear"></div>
         </div>
     </div>
@@ -36,3 +36,11 @@
         </div>
     </div>
 </div>
+<script>
+$(".template_head #login").unbind("click").bind("click",function(){
+	app.pop.on("login");
+	});
+$(".template_head #regist").unbind("click").bind("click",function(){
+	app.pop.on("regist");
+	});
+</script>
