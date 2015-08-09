@@ -8,7 +8,17 @@
         </div>
         <div class="point">
         	<div class="left">验证码</div>
-            <div class="right"><input name="password"/></div>
+            <div class="right"><input name="code"/></div>
+            <div class="clear"></div>
+        </div>
+        <div class="point">
+        	<div class="left">密码</div>
+            <div class="right"><input name="key" type="password"/></div>
+            <div class="clear"></div>
+        </div>
+        <div class="point">
+        	<div class="left">再次输入</div>
+            <div class="right"><input name="key2" type="password"/></div>
             <div class="clear"></div>
         </div>
     </div>
@@ -24,5 +34,17 @@
 $(".login .closePop,.login #cancel").unbind("click").bind("click",function(){
 	app.pop.off();
 	})
-
+$(".login #regist").unbind("click").bind("click",function(){
+	var send={
+		id:uuid(),
+		phone:$("#pop [name='userName']").val(),
+		password:$("#pop [name='key']").val(),
+		type:1
+		}
+	app.api.run("register",send,function(data){
+		alert("注册成功");
+		app.pop.off();
+		},function(e){
+		alert(JSON.stringify(e))});
+	})
 </script>

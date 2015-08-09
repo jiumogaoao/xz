@@ -2,6 +2,7 @@
 ;(function($,obj,config){
 	var routeArry={};
 	function changePage(){
+		obj.pop.off();
 		var hash="index";
 		if(location.hash){
 			hash=location.hash.replace("#","");
@@ -76,10 +77,10 @@
 				};
 			}
 		};		
-		obj.set=function(data){
+		obj.route.set=function(data){
 			set(data);
 			};
-		obj.init=function(){
+		obj.route.init=function(){
 			changePage();
 			};
-	})($,app.route,config);
+	})($,app,config);

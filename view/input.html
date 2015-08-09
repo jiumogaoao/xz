@@ -1,62 +1,68 @@
 <link href="css/table.css" rel="stylesheet" rev="stylesheet" type="text/css"/>
 <div class="table input">
-<table align="center" border="0" cellspacing="1" cellpadding="0">
-<tbody>
-
-<% _.each(input,function(x,y){ %>
-<tr><td align="center" valign="middle" width="30%" class="left"><%= x.title %></td>
-<td align="center" valign="middle" width="70%" name="<%= x.name %>" type="<%= x.type %>" class="right <%= x.type %>">
-<% if(x.type=="singlepic"){ %>
-<div class="img">
-<img src="<%= x.value||"img/addfile.png" %>"/>
-</div>
-<% }else if(x.type=="mulipic") { %>
-<div class="picFrame">
-<div id="addFrame"><div id="add"><span class="fa fa-plus-square-o"></span></div></div>
-</div>
-<% }else if(x.type=="image") { %>
-
-<img src="<%= x.value %>"/>
-
-<% }else if(x.type=="simple") { %>
-<%= x.value %>
-<% }else if(x.type=="textarea") { %>
-<textarea><%= x.value %></textarea>
-<% }else if(x.type=="date") { %>
-<input value="<%= x.value %>"/>
-<% }else if(x.type=="password") { %>
-<input type="password" value="<%= x.value %>"/>
-<% }else if(x.type=="number") { %>
-<input value="<%= x.value||0 %>"/>
-<div class="up"><span class="fa fa-caret-up"></span></div>
-<div class="down"><span class="fa fa-caret-down"></span></div>
-<% }else if(x.type=="dropdown") { %>
-<select>
-<%_.each(x.other,function(o){%>
-<option value="<%=o.label%>"><%=o.label%></option>
-<%})%>
-</select>
-<% }else if(x.type=="toggle") { %>
-<div><span class="fa fa-plus-square-o"></span></div>
-<% }else if(x.type=="rich") { %>
-<div id="editor_<%= uuid() %>" class="richframe" type="text/plain" style="width:618px;height:500px;"></div>
-<% }else{ %>
-<input value="<%= x.value %>"/>
-<% } %>
-</td></tr>
-<% }) %>
-
-</tbody>
-</table>
-<div class="clear"></div>
-<% if(button){ 
+  <table align="center" border="0" cellspacing="1" cellpadding="0">
+    <tbody>
+      <% _.each(input,function(x,y){ %>
+      <tr>
+        <td align="center" valign="middle" width="30%" class="left"><%= x.title %></td>
+        <td align="center" valign="middle" width="70%" name="<%= x.name %>" type="<%= x.type %>" class="right <%= x.type %>">
+        <% if(x.type=="singlepic"){ %>
+          <div class="img" id="<%= x.id %>" <% if(x.value){print('value="'+x.value+'"')} %>> <img src="<%= x.value||"img/addfile.png" %>"/> </div>
+          <% }else if(x.type=="mulipic") { %>
+          <div class="picFrame" id="<%= x.id %>" value="<% if(x.value){_.each(x.value,function(o,p){if(p==0){print(o)}else{print(","+o)}})} %>">
+            <% if(x.value){
+		_.each(x.value,function(o){ %>
+            <div class="newPic"> <img src="<%= o %>"/>
+              <div class="remove"><span class="fa fa-times"></span></div>
+            </div>
+            <%        });
+ } %>
+            <div id="addFrame">
+              <div id="add"><span class="fa fa-plus-square-o"></span></div>
+            </div>
+          </div>
+          <% }else if(x.type=="image") { %>
+          <img src="<%= x.value %>"/>
+          <% }else if(x.type=="simple") { %>
+          <%= x.value %>
+          <% }else if(x.type=="textarea") { %>
+          <textarea id="<%= x.id %>"><%= x.value %></textarea>
+          <% }else if(x.type=="date") { %>
+          <input id="<%= x.id %>" value="<%= x.value %>"/>
+          <% }else if(x.type=="password") { %>
+          <input id="<%= x.id %>" type="password" value="<%= x.value %>"/>
+          <% }else if(x.type=="number") { %>
+          <input id="<%= x.id %>" value="<%= x.value||0 %>"/>
+          <div class="up"><span class="fa fa-caret-up"></span></div>
+          <div class="down"><span class="fa fa-caret-down"></span></div>
+          <% }else if(x.type=="dropdown") { %>
+          <select id="<%= x.id %>">
+            <%_.each(x.other,function(o){%>
+            <option value="<%=o.value%>" <% if(x.value&&x.value==o.value){print("selected")} %>><%=o.label%></option>
+            <%})%>
+          </select>
+          <% }else if(x.type=="toggle") { %>
+          <div><span class="fa fa-plus-square-o"></span></div>
+          <% }else if(x.type=="rich") { %>
+          <div id="<%= x.id+"_"+uuid() %>" class="richframe" type="text/plain" style="width:618px;height:500px;"></div>
+          <% }else{ %>
+          <input id="<%= x.id %>" value="<%= x.value %>"/>
+          <% } %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <div class="clear"></div>
+  <% if(button){ 
 	_.each(button,function(n){ %>
   <button class="inputButton" type="button" id="<%= n.id %>"><%= n.name %></button>
-<% })} %>
-<div class="clear"></div>
+  <% })} %>
+  <div class="clear"></div>
 </div>
 <script>
-$(".table.input .number .up").unbind("click").bind("click",function(){
+;(function(){
+	var value=<% print(JSON.stringify(_.indexBy(input,"id"))) %>;
+	$(".table.input .number .up").unbind("click").bind("click",function(){
 	var number=Number($(this).parents("td").find("input").val())+1;
 	$(this).parents("td").find("input").val(number);
 	});
@@ -101,7 +107,11 @@ $(that).find("#addFrame").before(
 	uploader.on( 'uploadProgress', function( file, percentage ) {
 		})
 		uploader.on( 'uploadSuccess', function( file ,re) {
-			alert(JSON.stringify(file))
+			if($(that).find(".picFrame").attr("value")){
+				$(that).find(".picFrame").attr("value",$(that).find(".picFrame").attr("value")+","+re.url);
+				}else{
+					$(that).find(".picFrame").attr("value",re.url);
+					}
 });
 	})
 	
@@ -128,13 +138,18 @@ $(that).find(".img img").attr("src",src);
 	uploader.on( 'uploadProgress', function( file, percentage ) {
 		})
 		uploader.on( 'uploadSuccess', function( file ,re) {
-			alert(JSON.stringify(file))
+			$(that).find(".img").attr("value",re.url)
 });
 	})
 	$(".table.input .rich").each(function(){
 		var that=this;
 		var ue = UE.getEditor($(that).find(".richframe").attr("id"));
+		if(value&&value[$(that).find(".richframe").attr("id").split("_")[0]]&&value[$(that).find(".richframe").attr("id").split("_")[0]].value){
+			var delay2=setTimeout(function(){UE.getEditor($(that).find(".richframe").attr("id")).setContent(value[$(that).find(".richframe").attr("id").split("_")[0]].value);},200);
+			}
 		});
 	},200);
+	})();
+
 
 </script>

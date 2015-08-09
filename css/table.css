@@ -38,7 +38,7 @@
 	cursor:pointer;
 	}
 .table.input .singlepic .img{
-	max-width:100%;
+	width:100%;
 	min-height:50px;
 	cursor:pointer;
 	}
@@ -87,4 +87,5 @@
 	cursor:pointer;}
 .table.input select{
 	width:100%;
-	height:100%;}
+	height:100%;
+	text-align:center;}
