@@ -19,3 +19,11 @@ var uuid=function(){
 	        return (v.toString(16)).toUpperCase();
     	});
 	};
+var isNullObj=function(obj){
+    for(var i in obj){
+        if(obj.hasOwnProperty(i)){
+            return false;
+        }
+    }
+    return true;
+}

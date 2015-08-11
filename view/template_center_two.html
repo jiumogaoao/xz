@@ -2,9 +2,9 @@
 <div class="template_center_two">
 	<div class="template_left"></div>
     <div class="template_right">
-    	<img src="http://" class="pomo"/>
-        <img src="http://" class="pomo"/>
-        <img src="http://" class="pomo"/>
+    <% _.each(list,function(n){ %>
+    	<img src="<%= n %>" class="pomo"/>
+    <% }) %>
     </div>
     <div class="clear"></div>
 </div>
